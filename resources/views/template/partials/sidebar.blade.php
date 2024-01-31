@@ -13,13 +13,19 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="{{ asset('#') }}">
+        <a class="nav-link" href="{{ asset('/') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
+
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ asset('/grafik') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Grafik</span></a>
+    </li>
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
