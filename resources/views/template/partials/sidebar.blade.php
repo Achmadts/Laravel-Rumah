@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ asset('sb_admin2/sidebar') }}">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ asset('/') }}">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -23,8 +23,8 @@
 
     <li class="nav-item active">
         <a class="nav-link" href="{{ asset('/grafik') }}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Grafik</span></a>
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Chart</span></a>
     </li>
 
     <!-- Sidebar Toggler (Sidebar) -->
