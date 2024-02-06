@@ -7,19 +7,17 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class PetugasSeeder extends Seeder
+class KelasSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table('petugases')->insert([
-            "id_petugas" => random_int(1, 20),
-            "username" => Str::random(25),
-            "password" => Str::random(32),
-            "nama_petugas" => Str::random(35),
-            "level" => "admin",
+        DB::table("kelases")->insert([
+            "id_kelas" => random_int(1, 20),
+            "nama_kelas" => Str::random(10),
+            "kompetensi_keahlian" =>Str::random(50)
         ]);
     }
 }
