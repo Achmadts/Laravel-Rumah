@@ -20,7 +20,9 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('sb_admin2/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
+    @stack('css')
 </head>
 
 <body id="page-top">
@@ -99,7 +101,9 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('sb_admin2/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('sb_admin2/js/demo/chart-pie-demo.js') }}"></script>
+    <script src="{{ asset('sb_admin2/js/demo/chart-bar-demo.js') }}"></script>
 
+    @stack('js')
 </body>
 
 </html>

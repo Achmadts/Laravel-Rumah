@@ -27,6 +27,36 @@
             <span>Chart</span></a>
     </li>
 
+    <hr class="sidebar-divider">
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ asset('/petugas') }}">
+            <i class="fa-solid fa-user-large"></i>
+            <span>Data Petugas</span></a>
+    </li>
+
+    <hr class="sidebar-divider">
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ asset('/spp') }}">
+            <i class="fa-regular fa-note-sticky"></i>
+            <span>Data Spp</span></a>
+    </li>
+
+    <hr class="sidebar-divider">
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ asset('/kelas') }}">
+            <i class="fa-solid fa-school"></i>
+            <span>Data Kelas</span></a>
+    </li>
+
+    <hr class="sidebar-divider">
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ asset('/siswa') }}">
+            <i class="fa-solid fa-person"></i>
+            <span>Data Siswa</span></a>
+    </li>
+
+    <hr class="sidebar-divider">
+
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
