@@ -36,7 +36,7 @@ class SppModelController extends Controller
     {
         //
         $request->validate([
-            'tahun' => 'required|min:4|numeric',
+            'tahun' => 'required|numeric|digits:4',
             'nominal' => 'required|min:6|numeric',
         ]);
 
@@ -75,7 +75,7 @@ class SppModelController extends Controller
     {
         //
         $request->validate([
-            'tahun' => 'required|min:4|numeric',
+            'tahun' => 'required|numeric|digits:4',
             'nominal' => 'required|min:6|numeric',
         ]);
 

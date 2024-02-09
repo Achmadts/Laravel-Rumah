@@ -13,7 +13,7 @@
                     <div class="col-sm-6 mb-3 mb-sm-0">
                         <input type="text" name="tahun"
                             class="form-control form-control-user @error('tahun') {{ 'is-invalid' }} @enderror"
-                            placeholder="Tahun" autocomplete="off">
+                            placeholder="Tahun" autocomplete="off" value="{{ old("tahun") }}">
                         @error('tahun')
                             <span class="error invalid-feedback" style="display: inline">{{ $message }}</span>
                         @enderror
@@ -22,7 +22,7 @@
                     <div class="col-sm-6">
                         <input type="number" name="nominal"
                             class="form-control form-control-user @error('nominal') {{ 'is-invalid' }} @enderror"
-                            placeholder="Nominal" autocomplete="off">
+                            placeholder="Nominal" autocomplete="off" value="{{ old("nominal") }}">
                         @error('nominal')
                             <span class="error invalid-feedback" style="display: inline">{{ $message }}</span>
                         @enderror
