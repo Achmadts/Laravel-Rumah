@@ -1,5 +1,7 @@
 @extends('template.master')
 
+@section('title', "Aplikasi SPP | Detail SPP")
+
 @section('header', 'Detail data Petugas')
 
 @section('rowTengah')
@@ -8,11 +10,11 @@
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="text" name="tahun" class="form-control form-control-user" placeholder="Tahun"
-                        autocomplete="off" value="{{ $spp[0]['tahun'] }}" disabled>
+                        autocomplete="off" value="{{ $spp->tahun }}" disabled>
                 </div>
                 <div class="col-sm-6">
                     <input type="text" name="nominal" class="form-control form-control-user" placeholder="Nominal"
-                        autocomplete="off" value="Rp. {{ number_format($spp[0]['nominal']) }}" disabled>
+                        autocomplete="off" value="Rp. {{ number_format($spp->nominal) }}" disabled>
                 </div>
             </div>
             <div class="text-center">

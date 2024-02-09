@@ -1,5 +1,7 @@
 @extends('template.master')
 
+@section('title', "Aplikasi SPP | Edit Data SPP")
+
 @section('header', 'Edit data Spp')
 
 @section('rowTengah')

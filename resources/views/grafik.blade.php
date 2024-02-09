@@ -1,6 +1,6 @@
 @extends('template.master')
 
-@section('h1')
+@section('header')
     Chart Page
 @endsection
 
@@ -79,7 +79,20 @@
 
 @section('rowBawah')
     <!-- Content Column -->
-    <div class="col-lg-12 mb-4">
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
+            </div>
+            <div class="card-body">
+                <div class="chart-bar">
+                    <canvas id="myBarChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 mb-4">
 
         <!-- Project Card Example -->
         <div class="card shadow mb-4">
@@ -108,7 +121,7 @@
                         aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
-                <div class="progress">
+                <div class="progress" style="margin-bottom: 26px">
                     <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100"
                         aria-valuemin="0" aria-valuemax="100"></div>
                 </div>

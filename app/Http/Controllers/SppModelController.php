@@ -54,8 +54,8 @@ class SppModelController extends Controller
     public function show(string $id)
     {
         //
-        $spp = SppModel::select('*')->where('id_spp', $id)->get();
-        return view('spp.detail', compact('spp'));
+        $spp = DB::table('spps')->where('id_spp', $id)->first();
+        return view("spp.detail", compact('spp'));
     }
 
     /**

@@ -1,6 +1,6 @@
 @extends('template.master')
 
-@section('h1')
+@section('header')
     Welcome Page
 @endsection
 

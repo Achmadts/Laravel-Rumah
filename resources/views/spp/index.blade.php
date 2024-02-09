@@ -9,6 +9,8 @@
     <link href="{{ asset('sb_admin2/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 @endpush
 
+@section('title', "Aplikasi SPP | Data SPP")
+
 @section('header', 'Data Spp')
 
 @section('button')
