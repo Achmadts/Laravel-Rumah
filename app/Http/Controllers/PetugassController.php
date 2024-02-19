@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Petugass;
 use App\Http\Requests\StorePetugassRequest;
 use App\Http\Requests\UpdatePetugassRequest;
-use App\Models\Pembayaran;
 
 class PetugassController extends Controller
 {
@@ -72,8 +71,6 @@ class PetugassController extends Controller
      */
     public function destroy(Petugass $petuga)
     {
-        $id_petugas = $petuga->id_petugas;
-        Pembayaran::where('id_petugas', $id_petugas)->delete();
         $petuga->delete();
         return redirect()->route('petugas.index')->with(['success' => 'Data petugas dan pembayarannya berhasil dihapus']);
     }

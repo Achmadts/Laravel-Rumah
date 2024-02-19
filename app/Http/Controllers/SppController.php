@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Spp;
-use App\Models\Siswa;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSppRequest;
 use App\Http\Requests\UpdateSppRequest;
-use App\Models\Pembayaran;
 
 class SppController extends Controller
 {
@@ -73,9 +71,6 @@ class SppController extends Controller
      */
     public function destroy(Spp $spp)
     {
-        $id_spp_di_hapus = $spp->id_spp;
-        Pembayaran::where('id_spp', $id_spp_di_hapus)->delete();
-        Siswa::where('id_spp', $id_spp_di_hapus)->delete();
         $spp->delete();
         return redirect()->route('spp.index')->with(['success' => 'Data Spp, siswa, dan pembayarannya yang terkait berhasil dihapus']);
     }
