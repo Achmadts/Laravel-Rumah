@@ -29,13 +29,6 @@
 
     <hr class="sidebar-divider">
     <li class="nav-item active">
-        <a class="nav-link" href="{{ asset('/petugas') }}">
-            <i class="fa-solid fa-user-large"></i>
-            <span>Data Petugas</span></a>
-    </li>
-
-    <hr class="sidebar-divider">
-    <li class="nav-item active">
         <a class="nav-link" href="{{ asset('/spp') }}">
             <i class="fa-regular fa-note-sticky"></i>
             <span>Data Spp</span></a>
@@ -53,6 +46,20 @@
         <a class="nav-link" href="{{ asset('/siswa') }}">
             <i class="fa-solid fa-person"></i>
             <span>Data Siswa</span></a>
+    </li>
+
+    <hr class="sidebar-divider">
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ asset('/petugas') }}">
+            <i class="fa-solid fa-user-large"></i>
+            <span>Data Petugas</span></a>
+    </li>
+
+    <hr class="sidebar-divider">
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ asset('/pembayaran') }}">
+            <i class="fa-solid fa-sack-dollar"></i>
+            <span>Data Pembayaran</span></a>
     </li>
 
     <hr class="sidebar-divider">

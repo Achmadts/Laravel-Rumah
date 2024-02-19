@@ -9,13 +9,13 @@
     <link href="{{ asset('sb_admin2/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 @endpush
 
-@section('title', 'Aplikasi SPP | Data SPP')
-@section('confirmDeleteName', 'spp')
-@section('header', 'Data Spp')
+@section('title', 'Aplikasi SPP | Data Petugas')
+@section('confirmDeleteName', 'Mau hapus data Petugas?')
+@section('header', 'Data Petugas')
 
 @section('button')
-    <a href="{{ route('spp.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-            class="fa-solid fa-hand-holding-dollar fa-sm text-white-50"></i> Tambah Data Spp</a>
+    <a href="{{ route('petugas.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fa-solid fa-user-plus fa-sm text-white-50"></i> Tambah Data Petugas</a>
     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
             class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 @endsection
@@ -34,28 +34,32 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Tahun</th>
-                            <th>Nominal</th>
+                            <th>ID</th>
+                            <th>Nama Petugas</th>
+                            <th>Level</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($spps as $key => $spp)
+                        @forelse ($petugases as $key => $petugas)
                             <tr>
                                 <td>
                                     {{ $key + 1 }}
                                 </td>
                                 <td>
-                                    {{ $spp->tahun }}
+                                    {{ $petugas->id_petugas }}
                                 </td>
                                 <td>
-                                    Rp. {{ number_format($spp->nominal) }}
+                                    {{ $petugas->nama_petugas }}
                                 </td>
                                 <td>
-                                    <form action="{{ route('spp.destroy', $spp->id_spp) }}" method="POST" onsubmit="return confirm('Yakin mau hapus data ini?')">
-                                        <a href="{{ route('spp.show', $spp->id_spp) }}" class="btn btn-sm btn-info"><i
+                                    {{ $petugas->level }}
+                                </td>
+                                <td>
+                                    <form action="{{ route('petugas.destroy', $petugas->id_petugas) }}" method="POST" onsubmit="return confirm('Yakin mau hapus data ini?')">
+                                        <a href="{{ route('petugas.show', $petugas->id_petugas) }}" class="btn btn-sm btn-info"><i
                                                 class="fa-solid fa-circle-info pt-1"></i> Detail</a>
-                                        <a href="{{ route('spp.edit', $spp->id_spp) }}" class="btn btn-sm btn-primary"><i
+                                        <a href="{{ route('petugas.edit', $petugas->id_petugas) }}" class="btn btn-sm btn-primary"><i
                                                 class="fa-solid fa-pen-to-square"></i> Edit</a>
                                         @csrf
                                         @method('DELETE')
@@ -66,7 +70,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="4" class="text-center">Data Masih Kosong</td>
+                                <td colspan="5" class="text-center">Data Masih Kosong</td>
                             </tr>
                         @endforelse
                     </tbody>

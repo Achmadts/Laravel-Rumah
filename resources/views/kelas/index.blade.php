@@ -9,13 +9,13 @@
     <link href="{{ asset('sb_admin2/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 @endpush
 
-@section('title', 'Aplikasi SPP | Data SPP')
-@section('confirmDeleteName', 'spp')
-@section('header', 'Data Spp')
+@section('title', 'Aplikasi SPP | Data Kelas')
+@section('confirmDeleteName', 'Mau hapus data Kelas?')
+@section('header', 'Data Kelas')
 
 @section('button')
-    <a href="{{ route('spp.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-            class="fa-solid fa-hand-holding-dollar fa-sm text-white-50"></i> Tambah Data Spp</a>
+    <a href="{{ route('kelas.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fa-solid fa-school fa-sm text-white-50"></i> Tambah Data Kelas</a>
     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
             class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 @endsection
@@ -34,28 +34,28 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Tahun</th>
-                            <th>Nominal</th>
+                            <th>Nama Kelas</th>
+                            <th>Kompetensi Keahlian</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($spps as $key => $spp)
+                        @forelse ($kelases as $key => $kelas)
                             <tr>
                                 <td>
                                     {{ $key + 1 }}
                                 </td>
                                 <td>
-                                    {{ $spp->tahun }}
+                                    {{ $kelas->nama_kelas }}
                                 </td>
                                 <td>
-                                    Rp. {{ number_format($spp->nominal) }}
+                                    {{ $kelas->kompetensi_keahlian }}
                                 </td>
                                 <td>
-                                    <form action="{{ route('spp.destroy', $spp->id_spp) }}" method="POST" onsubmit="return confirm('Yakin mau hapus data ini?')">
-                                        <a href="{{ route('spp.show', $spp->id_spp) }}" class="btn btn-sm btn-info"><i
+                                    <form action="{{ route('kelas.destroy', $kelas) }}" method="POST" onsubmit="return confirm('Yakin mau hapus data ini?')">
+                                        <a href="{{ route('kelas.show', $kelas) }}" class="btn btn-sm btn-info"><i
                                                 class="fa-solid fa-circle-info pt-1"></i> Detail</a>
-                                        <a href="{{ route('spp.edit', $spp->id_spp) }}" class="btn btn-sm btn-primary"><i
+                                        <a href="{{ route('kelas.edit', $kelas) }}" class="btn btn-sm btn-primary"><i
                                                 class="fa-solid fa-pen-to-square"></i> Edit</a>
                                         @csrf
                                         @method('DELETE')
@@ -66,7 +66,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="4" class="text-center">Data Masih Kosong</td>
+                                <td colspan="5" class="text-center">Data Masih Kosong</td>
                             </tr>
                         @endforelse
                     </tbody>
