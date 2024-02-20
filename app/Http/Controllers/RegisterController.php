@@ -21,5 +21,6 @@ class RegisterController extends Controller
             'password' => $request->password,
             'nama_petugas' => $request->nama_petugas,
         ]);
+        return view('auth.login');
     }
 }
