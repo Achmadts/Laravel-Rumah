@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             PetugasSeeder::class,
             SiswaSeeder::class,
             SppSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }
