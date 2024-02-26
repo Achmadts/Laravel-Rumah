@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date("tgl_bayar");
             $table->string("bulan_dibayar", 8);
             $table->string("tahun_dibayar", 4);
-            $table->foreignId("id_spp")->references("id_spp")->on("siswas");
+            $table->foreignId("id_spp")->references("id_spp")->on("spps");
             $table->integer("jumlah_bayar");
             $table->timestamps();
         });

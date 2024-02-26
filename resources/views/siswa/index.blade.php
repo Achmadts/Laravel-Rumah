@@ -9,14 +9,14 @@
     <link href="{{ asset('sb_admin2/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 @endpush
 
-@section('title', 'Aplikasi SPP | Data SPP')
-@section('confirmDeleteName', 'spp')
-@section('header', 'Data Spp')
+@section('title', 'Aplikasi SPP | Data Siswa')
+@section('confirmDeleteName', 'Tindakan ini akan menghapus data pembayaran yang bersangkutan!')
+@section('header', 'Data Siswa')
 
 @section('button')
-    <a href="{{ route('spp.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-            class="fa-solid fa-hand-holding-dollar fa-sm text-white-50"></i> Tambah Data Spp</a>
-    <a href="{{ route('exportspp') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+    <a href="{{ route('siswa.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fa-solid fa-person-circle-plus fa-sm text-white-50"></i> Tambah Data Siswa</a>
+    <a href="{{ route('siswaexport') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
             class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 @endsection
 
@@ -30,7 +30,7 @@
                 </div>
             @endif
             <div class="table-responsive">
-                @include('spp.table', $spps)
+                @include('siswa.table')
             </div>
         </div>
     </div>

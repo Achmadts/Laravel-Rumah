@@ -3,10 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SppController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\KelasesController;
 use App\Http\Controllers\PetugassController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PembayaranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +54,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout')->
 
 Route::middleware(['can:isPetugas'])->group(function () {
     Route::get('/dashboard/petugas', [DashboardController::class, 'petugas'])->name('dashboard.petugas');
+    Route::resource('/pembayaran', PembayaranController::class);
 });
 
 Route::middleware(['can:isAdmin'])->group(function () {
@@ -58,4 +62,5 @@ Route::middleware(['can:isAdmin'])->group(function () {
     Route::resource('/spp', SppController::class);
     Route::resource('/petugas', PetugassController::class);
     Route::resource('/kelas', KelasesController::class);
+    Route::resource('/siswa', SiswaController::class);
 });
