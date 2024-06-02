@@ -71,6 +71,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ```
 composer install
+php artisan key:generate 
 composer require maatwebsite/excel
 composer require laravel/socialite
 ```
