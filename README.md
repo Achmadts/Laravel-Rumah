@@ -64,3 +64,85 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## CLONE
+
+<b> jalankan perintah berikut di `terminal`: </b>
+
+```
+composer install
+composer require maatwebsite/excel
+composer require laravel/socialite
+```
+
+<b> TAMBAHKAN BLOK KODE BERIKUT DI FILE `.env`: </b>
+
+<b>
+GITHUB_CLIENT_ID = 0a34904d1fc8b2469286 <br>
+GITHUB_CLIENT_SECRET = 9cc2b582645cf38d6bd8d1341456f3d544f9460b <br>
+GOOGLE_CLIENT_ID = 295828276910-16atubss7bgjvej7g87k2uhg4citvbak.apps.googleusercontent.com <br>
+GOOGLE_CLIENT_SECRET = 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 <br>
+</b><br>
+
+<b> Ubah blok kode ini didalam file `app.php`: </b>
+
+    'aliases' => Facade::defaultAliases()->merge([
+        'Example' => App\Facades\Example::class,
+    ])->toArray(),
+
+<b> menjadi: </b>
+
+    'aliases' => Facade::defaultAliases()->merge([
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+    ])->toArray(),
+
+
+<b> lalu, difile yang sama, ubah bagian ini: </b>
+
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        /*
+         * Package Service Providers...
+         */
+
+        /*
+         * Application Service Providers...
+         */
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
+    ])->toArray(),
+
+<b> menjadi: </b>
+
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        /*
+         * Package Service Providers...
+         */
+
+        /*
+         * Application Service Providers...
+         */
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+    ])->toArray(),
+
+
+Lalu tambahkan blok kode ini dibagian paling bawah file `services.php`:
+
+    'github' => [
+        'client_id' => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),
+        'redirect' => '/auth/github/callback',
+    ],
+
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => '/auth/google/callback',
+    ],
