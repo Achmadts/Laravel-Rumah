@@ -16,7 +16,7 @@
 @section('button')
     <a href="{{ route('pembayaran.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
             class="fa-solid fa-money-bill-1-wave fa-sm text-white-50"></i> Tambah Data Pembayaran</a>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+    <a href="{{ route('exportpembayaran') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
             class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 @endsection
 
@@ -51,9 +51,9 @@
                                     {{ $key + 1 }}
                                 </td>
                                 <td>
-                                    @foreach ($petugases as $petugas)
-                                        @if ($petugas->id_petugas == $pembayaran->id_petugas)
-                                            {{ $petugas->nama_petugas }}
+                                    @foreach ($users as $user)
+                                        @if ($user->id == $pembayaran->user_id)
+                                            {{ $user->nama_petugas }}
                                         @endif
                                     @endforeach
                                 </td>

@@ -12,15 +12,16 @@
                 @method('PUT')
                 <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                        <select class="form-select rounded-5" style="padding-top: 11px; padding-bottom: 11px" name="id_petugas"
+                        <select class="form-select rounded-5" style="padding-top: 11px; padding-bottom: 11px" name="user_id"
                             id="kelasSelect">
                             <option value="" selected disabled>Petugas</option>
-                            @foreach ($petugases as $petugas)
-                                <option value="{{ $petugas->id_petugas }}" @if ($id_petugas_lama == $petugas->id_petugas) selected @endif>
-                                    ID: {{ $petugas->id_petugas }} | Nama: {{ $petugas->nama_petugas }}</option>
+                            @foreach ($users as $user)
+                                <option value="{{ $user->id }}" @if ($id_user_lama == $user->id) selected @endif>
+                                    ID: {{ $user->id }} | Nama: {{ $user->nama_petugas }}
+                                </option>
                             @endforeach
                         </select>
-                        @error('id_petugas')
+                        @error('id')
                             <span class="error invalid-feedback" style="display: inline">{{ $message }}</span>
                         @enderror
                     </div>
@@ -30,7 +31,8 @@
                             style="padding-top: 11px; padding-bottom: 11px" name="nisn">
                             <option value="" selected disabled>NISN Siswa</option>
                             @foreach ($siswas as $siswa)
-                                <option value="{{ str_pad($siswa->nisn, 10, '0', STR_PAD_LEFT) }}" @if ($nisn_siswa_lama == str_pad($siswa->nisn, 10, '0', STR_PAD_LEFT)) selected @endif>
+                                <option value="{{ str_pad($siswa->nisn, 10, '0', STR_PAD_LEFT) }}"
+                                    @if ($nisn_siswa_lama == str_pad($siswa->nisn, 10, '0', STR_PAD_LEFT)) selected @endif>
                                     {{ str_pad($siswa->nisn, 10, '0', STR_PAD_LEFT) }} | {{ $siswa->nama }}</option>
                             @endforeach
                         </select>
@@ -75,7 +77,8 @@
                             <option value="" selected disabled>Id Spp</option>
                             @foreach ($spps as $spp)
                                 <option value="{{ $spp->id_spp }}" @if ($id_spp_lama == $spp->id_spp) selected @endif>
-                                    ID: {{ $spp->id_spp }} | Nominal: Rp. {{ number_format($spp->nominal) }} | Nama: {{ $siswa->nama }}</option>
+                                    ID: {{ $spp->id_spp }} | Nominal: Rp. {{ number_format($spp->nominal) }} | Nama:
+                                    {{ $siswa->nama }}</option>
                             @endforeach
                         </select>
                         @error('id_spp')

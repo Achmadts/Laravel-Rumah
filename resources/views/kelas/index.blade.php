@@ -16,7 +16,7 @@
 @section('button')
     <a href="{{ route('kelas.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
             class="fa-solid fa-school fa-sm text-white-50"></i> Tambah Data Kelas</a>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+    <a href="{{ route('exportkelas') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
             class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 @endsection
 
@@ -52,7 +52,8 @@
                                     {{ $kelas->kompetensi_keahlian }}
                                 </td>
                                 <td>
-                                    <form action="{{ route('kelas.destroy', $kelas) }}" method="POST" onsubmit="return confirm('Yakin mau hapus data ini?')">
+                                    <form action="{{ route('kelas.destroy', $kelas) }}" method="POST"
+                                        onsubmit="return confirm('Yakin mau hapus data ini?')">
                                         <a href="{{ route('kelas.show', $kelas) }}" class="btn btn-sm btn-info"><i
                                                 class="fa-solid fa-circle-info pt-1"></i> Detail</a>
                                         <a href="{{ route('kelas.edit', $kelas) }}" class="btn btn-sm btn-primary"><i

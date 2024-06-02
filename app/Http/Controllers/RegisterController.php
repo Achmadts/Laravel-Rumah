@@ -15,11 +15,13 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    public function store(StoreRegisterRequest $request, User $user){
+    public function store(StoreRegisterRequest $request){
+        // dd($request->all());
         $user = User::create([
             'username' => $request->username,
-            'password' => $request->password,
+            'email' => $request->email,
             'nama_petugas' => $request->nama_petugas,
+            'password' => $request->password,
         ]);
         return view('auth.login');
     }

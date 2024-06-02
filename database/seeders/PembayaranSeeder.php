@@ -26,7 +26,7 @@ class PembayaranSeeder extends Seeder
             "kompetensi_keahlian" => Str::random(50)
         ]);
 
-        $petugasID = DB::table('petugases')->insertGetId([
+        $petugasID = DB::table('users')->insertGetId([
             "id_petugas" => "01",
             "username" => "achmad",
             "password" => substr(md5("achmad"), 0, 32),

@@ -10,14 +10,14 @@
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="text" class="form-control form-control-user" autocomplete="off"
-                        value="NAMA PETUGAS: {{ $petugas->nama_petugas }}" disabled>
+                        value="NAMA PETUGAS: {{ $pembayaran->user->nama_petugas }}" disabled>
                 </div>
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="text" class="form-control form-control-user" autocomplete="off"
-                        value="NISN: {{ str_pad($siswa->nisn, 10, '0', STR_PAD_LEFT) }} | NAMA: {{ $siswa->nama }}"
-                        disabled>
+                        value="NISN: {{ str_pad($siswa->nisn, 10, '0', STR_PAD_LEFT) }} | NAMA: {{ $siswa->nama }}" disabled>
                 </div>
             </div>
+            
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="text" class="form-control form-control-user" autocomplete="off"

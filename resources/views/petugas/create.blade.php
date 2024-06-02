@@ -28,6 +28,17 @@
                         @enderror
                     </div>
 
+                    <div class="form-group row mb-0">
+                        <div class="col-sm-12 mt-3 mb-sm-0">
+                            <input type="text" name="email"
+                                class="form-control form-control-user @error('email') {{ 'is-invalid' }} @enderror"
+                                placeholder="Email" autocomplete="off" value="{{ old('email') }}">
+                            @error('email')
+                                <span class="error invalid-feedback" style="display: inline">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-6">
@@ -39,9 +50,10 @@
                         @enderror
                     </div>
                     <div class="col-sm-6">
-                        <select class="form-select rounded-5 @error('level') {{ 'is-invalid' }} @enderror" style="padding-top: 11px; padding-bottom: 11px" name="level"
-                            id="levelSelect">
-                            <option value="" disabled {{ old('level') == '' ? 'selected' : '' }}>Pilih Level</option>
+                        <select class="form-select rounded-5 @error('level') {{ 'is-invalid' }} @enderror"
+                            style="padding-top: 11px; padding-bottom: 11px" name="level" id="levelSelect">
+                            <option value="" disabled {{ old('level') == '' ? 'selected' : '' }}>Pilih Level
+                            </option>
                             <option value="admin" {{ old('level') == 'admin' ? 'selected' : '' }}>Admin</option>
                             <option value="petugas" {{ old('level') == 'petugas' ? 'selected' : '' }}>Petugas</option>
                         </select>

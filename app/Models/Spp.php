@@ -11,4 +11,14 @@ class Spp extends Model
     protected $table = 'spps';
     protected $primaryKey = 'id_spp';
     protected $fillable = ['tahun', 'nominal'];
+
+    public function siswas()
+    {
+        return $this->hasMany(Siswa::class, 'id_spp');
+    }
+
+    public function pembayarans()
+    {
+        return $this->hasMany(Pembayaran::class, 'id_spp');
+    }
 }

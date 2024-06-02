@@ -3,10 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Support\Str;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -19,8 +21,13 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'username',
-        'password',
+        'email',
         'nama_petugas',
+        'level',
+        'password',
+        'provider',
+        'provider_id',
+        'provider_token'
     ];
 
     /**
@@ -40,4 +47,22 @@ class User extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
     ];
+
+    public function pembayarans(): HasMany
+    {
+        return $this->hasMany(Pembayaran::class, 'user_id');
+    }
+
+    public static function generateUserName($username)
+    {
+        if ($username === null) {
+            $username = Str::lower(Str::random(8));
+        }
+
+        if (User::where('username', $username)->exists()) {
+            $newUsername = $username . Str::lower(Str::random(5));
+            $username = self::generateUserName($newUsername);
+        }
+        return $username;
+    }
 }

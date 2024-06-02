@@ -6,8 +6,10 @@ use App\Models\Spp;
 use App\Models\Siswa;
 use App\Models\Kelases;
 use App\Models\Pembayaran;
+use App\Exports\SiswaExport;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreSiswaRequest;
 use App\Http\Requests\UpdateSiswaRequest;
 
@@ -18,11 +20,21 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        //
-        $siswas = Siswa::all();
+        $siswas = Siswa::with('kelas', 'spp')->get();
         $kelases = Kelases::all();
         $spps = Spp::all();
-        return view('siswa.index', compact('siswas', 'kelases', 'spps'));
+        if (Auth::check()) {
+            $user = Auth::user();
+            return view('siswa.index', compact('siswas', 'kelases', 'spps', 'user'));
+        }
+    }
+
+    /**
+     * Export data siswa ke Excel.
+     */
+    public function siswaexport()
+    {
+        return Excel::download(new SiswaExport, 'DataSiswa.xlsx');
     }
 
     /**
@@ -30,19 +42,20 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        //
         $kelases = Kelases::all();
         $spps = Spp::all();
-        return view('siswa.create', compact('kelases', 'spps'));
+        if (Auth::check()) {
+            $user = Auth::user();
+            return view('siswa.create', compact('kelases', 'spps', 'user'));
+        }
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSiswaRequest $request, Siswa $siswa)
+    public function store(StoreSiswaRequest $request)
     {
-        //
-        $siswa->create($request->all());
+        Siswa::create($request->all());
         return redirect()->route('siswa.index')->with(['success' => 'Data Siswa berhasil disimpan']);
     }
 
@@ -54,7 +67,10 @@ class SiswaController extends Controller
         $siswa = Siswa::where('nisn', $id)->firstOrFail();
         $kelas = Kelases::find($siswa->id_kelas);
         $spp = Spp::find($siswa->id_spp);
-        return view("siswa.detail", compact('siswa', 'kelas', 'spp'));
+        if (Auth::check()) {
+            $user = Auth::user();
+            return view("siswa.detail", compact('siswa', 'kelas', 'spp', 'user'));
+        }
     }
 
     /**
@@ -62,13 +78,15 @@ class SiswaController extends Controller
      */
     public function edit(string $id)
     {
-        //
         $siswa = Siswa::where('nisn', $id)->firstOrFail();
         $kelases = Kelases::all();
         $spps = Spp::all();
         $id_kelas_lama = $siswa->id_kelas;
         $id_spp_lama = $siswa->id_spp;
-        return view("siswa.edit", compact('siswa', 'kelases', 'spps', 'id_kelas_lama', 'id_spp_lama'));
+        if (Auth::check()) {
+            $user = Auth::user();
+            return view("siswa.edit", compact('siswa', 'kelases', 'spps', 'id_kelas_lama', 'id_spp_lama', 'user'));
+        }
     }
 
     /**
@@ -76,8 +94,6 @@ class SiswaController extends Controller
      */
     public function update(UpdateSiswaRequest $request, Siswa $siswa)
     {
-        //
-        // dd($request->all());
         $siswa->update($request->all());
         return redirect()->route('siswa.index')->with(['success' => 'Data siswa berhasil diedit']);
     }
@@ -85,11 +101,9 @@ class SiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, string $id)
+    public function destroy(Siswa $siswa)
     {
-        $siswa = Siswa::where('nisn', $id)->first();
-        $id_spp = $siswa->id_spp;
-        Pembayaran::where('id_spp', $id_spp)->delete();
+        $siswa->pembayarans()->delete();
         $siswa->delete();
         return redirect()->route('siswa.index')->with(['success' => 'Data siswa berhasil dihapus']);
     }

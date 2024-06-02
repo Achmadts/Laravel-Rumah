@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Spp;
 use App\Models\Siswa;
-use App\Http\Controllers\Controller;
+use App\Exports\SppExport;
+use App\Models\Pembayaran;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreSppRequest;
 use App\Http\Requests\UpdateSppRequest;
-use App\Models\Pembayaran;
 
 class SppController extends Controller
 {
@@ -16,9 +19,19 @@ class SppController extends Controller
      */
     public function index()
     {
-        //
         $spps = Spp::all();
-        return view('spp.index', compact('spps'));
+        if (Auth::check()) {
+            $user = Auth::user();
+            return view('spp.index', compact('spps', 'user'));
+        }
+    }
+
+    /**
+     * Export data spp ke Excel.
+     */
+    public function sppexport()
+    {
+        return Excel::download(new SppExport, 'DataSPP.xlsx');
     }
 
     /**
@@ -26,17 +39,18 @@ class SppController extends Controller
      */
     public function create()
     {
-        //
-        return view('spp.create');
+        if (Auth::check()) {
+            $user = Auth::user();
+            return view('spp.create', compact('user'));
+        }
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSppRequest $request, Spp $spp)
+    public function store(StoreSppRequest $request)
     {
-        //
-        $spp->create($request->all());
+        Spp::create($request->all());
         return redirect()->route('spp.index')->with(['success' => 'Data spp berhasil disimpan']);
     }
 
@@ -45,8 +59,10 @@ class SppController extends Controller
      */
     public function show(Spp $spp)
     {
-        //
-        return view('spp.detail', compact('spp'));
+        if (Auth::check()) {
+            $user = Auth::user();
+            return view('spp.detail', compact('spp', 'user'));
+        }
     }
 
     /**
@@ -54,8 +70,10 @@ class SppController extends Controller
      */
     public function edit(Spp $spp)
     {
-        //
-        return view("spp.edit", compact("spp"));
+        if (Auth::check()) {
+            $user = Auth::user();
+            return view("spp.edit", compact("spp", 'user'));
+        }
     }
 
     /**
@@ -63,7 +81,6 @@ class SppController extends Controller
      */
     public function update(UpdateSppRequest $request, Spp $spp)
     {
-        //
         $spp->update($request->all());
         return redirect()->route('spp.index')->with(['success' => 'Data Spp berhasil diedit']);
     }

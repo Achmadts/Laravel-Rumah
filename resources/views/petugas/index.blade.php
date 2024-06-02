@@ -14,9 +14,9 @@
 @section('header', 'Data Petugas')
 
 @section('button')
-    <a href="{{ route('petugas.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+    <a href="{{ route('user.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
             class="fa-solid fa-user-plus fa-sm text-white-50"></i> Tambah Data Petugas</a>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+    <a href="{{ route('exportuser') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
             class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 @endsection
 
@@ -41,25 +41,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($petugases as $key => $petugas)
+                        @forelse ($users as $key => $user)
                             <tr>
                                 <td>
                                     {{ $key + 1 }}
                                 </td>
                                 <td>
-                                    {{ $petugas->id_petugas }}
+                                    {{ $user->id }}
                                 </td>
                                 <td>
-                                    {{ $petugas->nama_petugas }}
+                                    {{ $user->nama_petugas }}
                                 </td>
                                 <td>
-                                    {{ $petugas->level }}
+                                    {{ $user->level }}
                                 </td>
                                 <td>
-                                    <form action="{{ route('petugas.destroy', $petugas->id_petugas) }}" method="POST" onsubmit="return confirm('Yakin mau hapus data ini?')">
-                                        <a href="{{ route('petugas.show', $petugas->id_petugas) }}" class="btn btn-sm btn-info"><i
+                                    <form action="{{ route('user.destroy', $user->id) }}" method="POST"
+                                        onsubmit="return confirm('Yakin mau hapus data ini?')">
+                                        <a href="{{ route('user.show', $user->id) }}" class="btn btn-sm btn-info"><i
                                                 class="fa-solid fa-circle-info pt-1"></i> Detail</a>
-                                        <a href="{{ route('petugas.edit', $petugas->id_petugas) }}" class="btn btn-sm btn-primary"><i
+                                        <a href="{{ route('user.edit', $user->id) }}" class="btn btn-sm btn-primary"><i
                                                 class="fa-solid fa-pen-to-square"></i> Edit</a>
                                         @csrf
                                         @method('DELETE')

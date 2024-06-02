@@ -11,17 +11,17 @@
                 @csrf
                 <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                        <select class="form-select rounded-5 @error('id_petugas') {{ 'is-invalid' }} @enderror"
-                            style="padding-top: 11px; padding-bottom: 11px" name="id_petugas">
+                        <select class="form-select rounded-5 @error('user_id') {{ 'is-invalid' }} @enderror"
+                            style="padding-top: 11px; padding-bottom: 11px" name="user_id">
                             <option value="" selected disabled>Petugas</option>
-                            @foreach ($petugases as $petugas)
-                                <option value="{{ $petugas->id_petugas }}"
-                                    {{ old('id_petugas') == $petugas->id_petugas ? 'selected' : '' }}>
-                                    {{ $petugas->nama_petugas }}
+                            @foreach ($users as $user)
+                                <option value="{{ $user->id }}"
+                                    {{ old('user_id') == $user->id ? 'selected' : '' }}>
+                                    {{ $user->nama_petugas }}
                                 </option>
                             @endforeach
                         </select>
-                        @error('id_petugas')
+                        @error('user_id')
                             <span class="error invalid-feedback" style="display: inline">{{ $message }}</span>
                         @enderror
                     </div>

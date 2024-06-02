@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePetugassRequest extends FormRequest
+class StoreUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +23,9 @@ class StorePetugassRequest extends FormRequest
     {
         return [
             //
-            "username" => 'required|max:25|unique:petugases',
+            "username" => 'required|max:25|unique:users',
             "password" => 'required|max:32',
-            "nama_petugas" => 'required|max:35|unique:petugases',
+            "nama_petugas" => 'required|max:35|unique:users',
         ];
     }
 }

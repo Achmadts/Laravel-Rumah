@@ -24,8 +24,9 @@ class StoreRegisterRequest extends FormRequest
         return [
             //
             'username' => 'required|min:3',
-            'password' => 'required|min:6',
+            'email' => 'required|email|unique:users,email',
             'nama_petugas' => 'required|min:5',
+            'password' => 'required|min:6',
         ];
     }
 }

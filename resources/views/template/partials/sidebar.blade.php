@@ -31,13 +31,6 @@
     @endcan
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <li class="nav-item active">
-        <a class="nav-link" href="{{ asset('/grafik') }}">
-            <i class="fa-solid fa-chart-line"></i>
-            <span>Chart</span></a>
-    </li>
 
     @can('manage_admin')
         <hr class="sidebar-divider">
@@ -69,7 +62,7 @@
     @can('manage_admin')
         <hr class="sidebar-divider">
         <li class="nav-item active">
-            <a class="nav-link" href="{{ asset('/petugas') }}">
+            <a class="nav-link" href="{{ asset('/user') }}">
                 <i class="fa-solid fa-user-large"></i>
                 <span>Data Petugas</span></a>
         </li>

@@ -25,7 +25,6 @@
 <body class="bg-gradient-primary">
 
     <div class="container">
-
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
@@ -39,33 +38,60 @@
                                 @csrf
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" name="username" class="form-control form-control-user"
-                                            id="exampleFirstName" placeholder="Username">
+                                        <input type="text" name="nama_petugas"
+                                            class="form-control form-control-user @error('nama_petugas') is-invalid @enderror"
+                                            id="exampleInputEmail" placeholder="Nama" autocomplete="off" value="{{ old('nama_petugas') }}">
+                                        @error('nama_petugas')
+                                            <p class="login-box-msg error invalid-feedback"
+                                                style="font-size: 15px; color: red;">
+                                                {{ $message }}</p>
+                                        @enderror
                                     </div>
-                                    <div class="col-sm-6">
-                                        <input name="password" type="password" class="form-control form-control-user"
-                                            id="exampleLastName" placeholder="Password">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" name="username"
+                                            class="form-control form-control-user @error('username') is-invalid @enderror"
+                                            id="exampleFirstName" placeholder="Username" autocomplete="off" value="{{ old('username') }}">
+                                        @error('username')
+                                            <p class="login-box-msg error invalid-feedback"
+                                                style="font-size: 15px; color: red;">
+                                                {{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" name="nama_petugas" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Nama Petugas">
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" name="email"
+                                            class="form-control form-control-user @error('email') is-invalid @enderror"
+                                            id="exampleFirstName" placeholder="Email" autocomplete="off" value="{{ old('email') }}">
+                                        @error('email')
+                                            <p class="login-box-msg error invalid-feedback"
+                                                style="font-size: 15px; color: red;">
+                                                {{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="password" name="password"
+                                            class="form-control form-control-user @error('password') is-invalid @enderror"
+                                            id="exampleFirstName" placeholder="Password" autocomplete="off" value="{{ old('password') }}">
+                                        @error('password')
+                                            <p class="login-box-msg error invalid-feedback"
+                                                style="font-size: 15px; color: red;">
+                                                {{ $message }}</p>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <input type="submit" value="Register" class="btn btn-primary w-100">
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
-                            </div>
-                            <div class="text-center">
-                                <a class="small" href="login.html">Already have an account? Login!</a>
+                                <p class="small">Sudah punya akun?<a href="{{ route('auth.login') }}"> Login
+                                        sekarang!</a></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- Bootstrap core JavaScript-->

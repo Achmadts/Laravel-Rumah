@@ -6,8 +6,11 @@ use App\Models\Siswa;
 use App\Models\Kelases;
 use App\Models\Pembayaran;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreKelasesRequest;
 use App\Http\Requests\UpdateKelasesRequest;
+use App\Exports\KelasExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KelasesController extends Controller
 {
@@ -16,9 +19,19 @@ class KelasesController extends Controller
      */
     public function index()
     {
-        //
         $kelases = Kelases::all();
-        return view('kelas.index', compact('kelases'));
+        if (Auth::check()) {
+            $user = Auth::user();
+            return view('kelas.index', compact('kelases', 'user'));
+        }
+    }
+
+    /**
+     * Export data kelas ke Excel.
+     */
+    public function exportkelas()
+    {
+        return Excel::download(new KelasExport, 'DataKelas.xlsx');
     }
 
     /**
@@ -26,27 +39,30 @@ class KelasesController extends Controller
      */
     public function create()
     {
-        //
-        return view('kelas.create');
+        if (Auth::check()) {
+            $user = Auth::user();
+            return view('kelas.create', compact('user'));
+        }
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreKelasesRequest $request, Kelases $kelas)
+    public function store(StoreKelasesRequest $request)
     {
-        //
-        $kelas->create($request->all());
+        Kelases::create($request->all());
         return redirect()->route('kelas.index')->with(['success' => 'Data Kelas berhasil disimpan']);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Kelases $kela)
     {
-        $kelas = Kelases::find($id);
-        return view('kelas.detail', compact('kelas'));
+        if (Auth::check()) {
+            $user = Auth::user();
+            return view('kelas.detail', compact('kela', 'user'));
+        }
     }
 
     /**
@@ -54,8 +70,10 @@ class KelasesController extends Controller
      */
     public function edit(Kelases $kela)
     {
-        //
-        return view("kelas.edit", compact("kela"));
+        if (Auth::check()) {
+            $user = Auth::user();
+            return view("kelas.edit", compact("kela", 'user'));
+        }
     }
 
     /**
@@ -63,11 +81,13 @@ class KelasesController extends Controller
      */
     public function update(UpdateKelasesRequest $request, Kelases $kela)
     {
-        //
         $kela->update($request->all());
         return redirect()->route('kelas.index')->with(['success' => 'Data Kelas berhasil diedit']);
     }
 
+    /**
+     * Remove the specified resource from storage.
+     */
     /**
      * Remove the specified resource from storage.
      */

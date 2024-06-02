@@ -23,7 +23,7 @@ class StorePembayaranRequest extends FormRequest
     {
         return [
             //
-            'id_petugas' => 'required|exists:petugases,id_petugas',
+            'user_id' => 'required|exists:users,id',
             'nisn' => 'required|exists:siswas,nisn',
             'tgl_bayar' => 'required|date',
             'bulan_dibayar' => 'required|max:9|regex:/^[a-zA-Z\s]+$/',

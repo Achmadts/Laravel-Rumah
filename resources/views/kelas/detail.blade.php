@@ -10,17 +10,17 @@
             <div class="form-group row">
                 <div class="col-sm-12 mb-3 mb-sm-0">
                     <input type="text" class="form-control form-control-user" placeholder="ID Kelas" autocomplete="off"
-                        value="ID KELAS: {{ $kelas->id_kelas }}" disabled>
+                        value="ID KELAS: {{ $kela->id_kelas }}" disabled>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="text" class="form-control form-control-user" placeholder="Nama Kelas" autocomplete="off"
-                        value="KELAS: {{ $kelas->nama_kelas }}" disabled>
+                        value="KELAS: {{ $kela->nama_kelas }}" disabled>
                 </div>
                 <div class="col-sm-6">
                     <input type="text" class="form-control form-control-user" placeholder="Kompetensi Keahlian"
-                        autocomplete="off" value="JURUSAN: {{ $kelas->kompetensi_keahlian }}" disabled>
+                        autocomplete="off" value="JURUSAN: {{ $kela->kompetensi_keahlian }}" disabled>
                 </div>
             </div>
             <div class="text-center">
