@@ -28,7 +28,7 @@ class UpdateSiswaRequest extends FormRequest
             'nama' => 'required|min:6|max:35|regex:/^[a-zA-Z\s]+$/',
             'id_kelas' => 'required|exists:kelases,id_kelas',
             'alamat' => 'required|max:255',
-            'no_telp' => 'required|min:11|numeric',
+            'no_telp' => 'required|string|min:11|max:14|regex:/^[0-9]+$/',
             'id_spp' => 'required|exists:spps,id_spp',
         ];
     }
