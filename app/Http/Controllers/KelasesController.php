@@ -93,12 +93,6 @@ class KelasesController extends Controller
      */
     public function destroy(Kelases $kela)
     {
-        $id_kelas_di_hapus = $kela->id_kelas;
-        $nisn_siswa_di_kelas = Siswa::where('id_kelas', $id_kelas_di_hapus)->pluck('nisn');
-        Pembayaran::whereIn('id_spp', function ($query) use ($nisn_siswa_di_kelas) {
-            $query->select('id_spp')->from('siswas')->whereIn('nisn', $nisn_siswa_di_kelas);
-        })->delete();
-        Siswa::where('id_kelas', $id_kelas_di_hapus)->delete();
         $kela->delete();
         return redirect()->route('kelas.index')->with(['success' => 'Data Kelas, Siswa, dan Pembayaran yang terkait berhasil dihapus']);
     }

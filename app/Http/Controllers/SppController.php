@@ -90,9 +90,6 @@ class SppController extends Controller
      */
     public function destroy(Spp $spp)
     {
-        $id_spp_di_hapus = $spp->id_spp;
-        Pembayaran::where('id_spp', $id_spp_di_hapus)->delete();
-        Siswa::where('id_spp', $id_spp_di_hapus)->delete();
         $spp->delete();
         return redirect()->route('spp.index')->with(['success' => 'Data Spp, siswa, dan pembayarannya yang terkait berhasil dihapus']);
     }

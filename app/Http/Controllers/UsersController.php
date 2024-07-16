@@ -94,8 +94,6 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
-        $id = $user->id;
-        Pembayaran::where('user_id', $id)->delete();
         $user->delete();
         return redirect()->route('user.index')->with(['success' => 'Data petugas dan pembayarannya berhasil dihapus']);
     }

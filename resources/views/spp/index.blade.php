@@ -53,7 +53,7 @@
                                     {{ $spp->tahun }}
                                 </td>
                                 <td>
-                                    {{ $spp->nominal }}
+                                    Rp. {{ number_format($spp->nominal) }}
                                 </td>
                                 <td>
                                     <form action="{{ route('spp.destroy', $spp->id_spp) }}" method="POST"

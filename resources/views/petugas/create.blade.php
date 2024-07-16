@@ -7,7 +7,7 @@
 @section('rowTengah')
     <div class="col-lg-12">
         <div class="p-5">
-            <form class="user" action="{{ route('petugas.store') }}" method="POST">
+            <form class="user" action="{{ route('user.store') }}" method="POST">
                 @csrf
                 <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">

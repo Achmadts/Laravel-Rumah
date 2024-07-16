@@ -103,7 +103,6 @@ class SiswaController extends Controller
      */
     public function destroy(Siswa $siswa)
     {
-        $siswa->pembayarans()->delete();
         $siswa->delete();
         return redirect()->route('siswa.index')->with(['success' => 'Data siswa berhasil dihapus']);
     }
