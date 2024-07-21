@@ -27,7 +27,7 @@ class StorePembayaranRequest extends FormRequest
             'nisn' => 'required|exists:siswas,nisn',
             'tgl_bayar' => 'required|date',
             'bulan_dibayar' => 'required|max:9|regex:/^[a-zA-Z\s]+$/',
-            'tahun_dibayar' => 'required|max:4',
+            'tahun_dibayar' => 'required|numeric|digits:4',
             'id_spp' => 'required|exists:siswas,id_spp',
             'jumlah_bayar' => 'required|min:6|numeric',
         ];

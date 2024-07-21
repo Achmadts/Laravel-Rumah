@@ -27,10 +27,11 @@ class PembayaranSeeder extends Seeder
         ]);
 
         $petugasID = DB::table('users')->insertGetId([
-            "id_petugas" => "01",
+            "id" => "01",
             "username" => "achmad",
-            "password" => substr(md5("achmad"), 0, 32),
+            "email" => "achmadtirtosudirosudiro@gmail.com",
             "nama_petugas" => "Achmad Tirto Sudiro",
+            "password" => bcrypt('achmad'),
             "level" => "admin",
         ]);
 
@@ -46,7 +47,7 @@ class PembayaranSeeder extends Seeder
 
         DB::table('pembayarans')->insert([
             "id_pembayaran" => random_int(1, 20),
-            "id_petugas" => "01",
+            "user_id" => "01",
             "nisn" => "0065494849",
             "tgl_bayar" => now(),
             "bulan_dibayar" => random_int(1, 12),

@@ -77,8 +77,7 @@
                             <option value="" selected disabled>Id Spp</option>
                             @foreach ($spps as $spp)
                                 <option value="{{ $spp->id_spp }}" @if ($id_spp_lama == $spp->id_spp) selected @endif>
-                                    ID: {{ $spp->id_spp }} | Nominal: Rp. {{ number_format($spp->nominal) }} | Nama:
-                                    {{ $siswa->nama }}</option>
+                                    ID: {{ $spp->id_spp }} | Nominal: Rp. {{ number_format($spp->nominal) }}</option>
                             @endforeach
                         </select>
                         @error('id_spp')

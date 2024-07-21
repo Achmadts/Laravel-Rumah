@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="text" class="form-control form-control-user" autocomplete="off"
-                        value="ID SPP: {{ $spp->id_spp }} | Nominal: Rp. {{ number_format($spp->nominal) }}" disabled>
+                    value="ID SPP: {{ $spp->id_spp }} | Nominal: Rp. {{ number_format($spp->nominal) }} | Nama: {{ $siswa->nama }}" disabled>
                 </div>
             </div>
             <div class="form-group row">
